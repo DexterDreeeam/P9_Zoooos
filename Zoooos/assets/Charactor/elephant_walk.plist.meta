@@ -1,0 +1,86 @@
+{
+  "ver": "1.0.6",
+  "importer": "sprite-atlas",
+  "imported": true,
+  "uuid": "4c9763b8-647d-4728-a594-986f0b2973ab",
+  "files": [
+    ".plist",
+    ".json"
+  ],
+  "subMetas": {
+    "2ea8b": {
+      "importer": "sprite-frame",
+      "uuid": "4c9763b8-647d-4728-a594-986f0b2973ab@2ea8b",
+      "displayName": "",
+      "id": "2ea8b",
+      "name": "elephant1",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 1164,
+        "height": 966,
+        "rawWidth": 1164,
+        "rawHeight": 966,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "dc81ce0a-4364-4a3d-9d8f-bccfd7f9709a@6c48a",
+        "atlasUuid": "4c9763b8-647d-4728-a594-986f0b2973ab"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e6d84": {
+      "importer": "sprite-frame",
+      "uuid": "4c9763b8-647d-4728-a594-986f0b2973ab@e6d84",
+      "displayName": "",
+      "id": "e6d84",
+      "name": "elephant2",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 966,
+        "width": 1164,
+        "height": 966,
+        "rawWidth": 1164,
+        "rawHeight": 966,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "dc81ce0a-4364-4a3d-9d8f-bccfd7f9709a@6c48a",
+        "atlasUuid": "4c9763b8-647d-4728-a594-986f0b2973ab"
+      },
+      "ver": "1.0.9",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "atlasTextureName": "elephant_walk.png",
+    "format": 3,
+    "uuid": "4c9763b8-647d-4728-a594-986f0b2973ab",
+    "textureUuid": "dc81ce0a-4364-4a3d-9d8f-bccfd7f9709a@6c48a"
+  }
+}

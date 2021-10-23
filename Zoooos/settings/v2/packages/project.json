@@ -1,0 +1,25 @@
+{
+  "__version__": "1.0.1",
+  "layer": [
+    {
+      "name": "L0",
+      "value": 1
+    },
+    {
+      "name": "L1",
+      "value": 2
+    },
+    {
+      "name": "L2",
+      "value": 4
+    },
+    {
+      "name": "L3",
+      "value": 8
+    },
+    {
+      "name": "L4",
+      "value": 16
+    }
+  ]
+}
