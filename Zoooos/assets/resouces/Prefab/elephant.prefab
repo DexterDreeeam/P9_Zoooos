@@ -46,8 +46,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.5,
-      "y": 0.5,
+      "x": 0.1,
+      "y": 0.1,
       "z": 1
     },
     "_layer": 33554432,
@@ -145,7 +145,7 @@
     "__prefab": {
       "__id__": 7
     },
-    "playOnLoad": false,
+    "playOnLoad": true,
     "_clips": [
       {
         "__uuid__": "c9a775fd-0e5b-40d7-b53d-65ad1c8d9d08",

@@ -1,30 +1,43 @@
 
-import { _decorator, Component, Node, log, game, director } from 'cc';
+import { _decorator, Component, Node, log, game, director, Scene, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
-import { Player } from "./Player";
+import { Player, PlayerRuntime } from "./Player";
+import { PlayerBuilder } from './PlayerBuilder';
 
 @ccclass("GameManagerRuntime")
 export class GameManagerRuntime
 {
-    private _players: Map<string, Player>;
+    private _playerBuilder: PlayerBuilder = new PlayerBuilder();
+    private _firstPlayer: PlayerRuntime | null;
+    private _players: Map<string, PlayerRuntime> = new Map<string, PlayerRuntime>();
 
-    addPlayer(playerName: string, player: Player)
+    add_player(playerName: string, player: PlayerRuntime)
     {
         this._players.set(playerName, player);
     }
 
-    removePlayer(playerName: string)
+    assign_first_player(player: PlayerRuntime)
+    {
+        this._firstPlayer = player;
+    }
+
+    remove_player(playerName: string)
     {
         this._players.delete(playerName);
     }
 
-    getPlayer(playerName: string): Player
+    get_player(playerName: string): PlayerRuntime
     {
         return this._players[playerName];
     }
 
-    clearPlayers()
+    get_first_player(): PlayerRuntime
+    {
+        return this._firstPlayer;
+    }
+
+    clear_players()
     {
         this._players.clear();
     }
@@ -33,11 +46,46 @@ export class GameManagerRuntime
 @ccclass("GameManager")
 export class GameManager extends Component
 {
-    private _runtime : GameManagerRuntime;
+    private _player_builder: PlayerBuilder = null!;
+    private _runtime: GameManagerRuntime = new GameManagerRuntime();
+
+    getGameRuntime(): GameManagerRuntime
+    {
+        return this._runtime;
+    }
+
+    login_to_gamemap(player: PlayerRuntime): void
+    {
+        this._runtime.clear_players();
+        this._runtime.add_player("player", player);
+        this._runtime.assign_first_player(player);
+        director.loadScene("GameMap",
+            function(err, scene: Scene)
+            {
+                scene.getChildByName("GameManager").getComponent(GameManager).build_player(
+                    player,
+                    function(node: Node)
+                    {
+                        scene.getChildByName("Canvas").getChildByName("Background").addChild(node);
+                        node.setPosition(new Vec3(100, 100, 0));
+                    });
+            });
+    }
+
+    build_player(player: PlayerRuntime, cb: (node: Node) => void): void
+    {
+        this._player_builder.build_player(player, cb);
+    }
+
+    input_first_player_direction(x_delta: number, y_delta: number)
+    {
+        this._runtime.get_first_player()._player_component.input_direction(x_delta, y_delta);
+    }
 
     onLoad()
     {
         log("GameManagerComponent onLoad().");
+        this._player_builder = this.node.getComponent(PlayerBuilder);
     }
 
     start()
@@ -50,15 +98,5 @@ export class GameManager extends Component
     update(deltaTime: number)
     {
         log("GameManagerComponent update().");
-    }
-
-    getGameRuntime() : GameManagerRuntime
-    {
-        return this._runtime;
-    }
-
-    updateScene()
-    {
-        
     }
 }
